@@ -2,8 +2,8 @@ name: Discord Fun Drop
 
 on:
   schedule:
-    # 01:00 UTC = 08:00 WIB, tiap hari
-    - cron: "0 1 * * *"
+    # setiap jam
+    - cron: "0 */1 * * *"
   workflow_dispatch:
     inputs:
       mode:
