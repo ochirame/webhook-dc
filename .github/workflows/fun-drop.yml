@@ -31,7 +31,7 @@ jobs:
           python-version: "3.12"
 
       - name: Kirim ke Discord
-        run: python scripts/fun_drop.py
+        run: python fun_drop.py
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_FUN_WEBHOOK_URL }}
           MODE: ${{ inputs.mode || 'random' }}
