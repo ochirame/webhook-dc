@@ -1,0 +1,37 @@
+name: Discord Fun Drop
+
+on:
+  schedule:
+    # 01:00 UTC = 08:00 WIB, tiap hari
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Jenis konten"
+        type: choice
+        default: random
+        options:
+          - random
+          - quote
+          - trivia
+          - meme
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Kirim ke Discord
+        run: python scripts/fun_drop.py
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_FUN_WEBHOOK_URL }}
+          MODE: ${{ inputs.mode || 'random' }}
