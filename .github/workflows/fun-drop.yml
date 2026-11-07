@@ -33,5 +33,5 @@ jobs:
       - name: Kirim ke Discord
         run: python fun_drop.py
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_FUN_WEBHOOK_URL }}
+          DISCORD_FUN_WEBHOOK_URL: ${{ secrets.DISCORD_FUN_WEBHOOK_URL }}
           MODE: ${{ inputs.mode || 'random' }}
